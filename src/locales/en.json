@@ -1,0 +1,33 @@
+{
+    "navbar": {
+        "login": "Sign In",
+        "logout": "Logout",
+        "register": "Sign Up",
+        "opensource": "We are opensource!",
+
+        "home": "Why Litty?",
+        "about": "About us"
+    },
+    "auth": {
+        "welcomeBack": "Welcome Back!",
+        "login": "Sign In",
+        "register": "Sign Up",
+        "seeAgain": "Nice to see you again!",
+        "welcome": "Nice to see new user!",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "noAccount": "Don't have an account?",
+        "haveAccount": "Already have an account?"
+    },
+    "about": {
+        "info": "Chat, talk, discuss with your friends! So what? Time to get this party started!",
+        "moreInfo": "Learn more"
+    },
+    "updateUser": {
+        "updateAccount": "Update Account",
+        "editProfileDetails": "Edit Profile Details"
+    },
+    "back": "Back",
+    "update": "Update"
+}
