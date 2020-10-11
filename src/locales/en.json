@@ -3,10 +3,10 @@
         "login": "Sign In",
         "logout": "Logout",
         "register": "Sign Up",
-        "opensource": "We are opensource!",
+        "opensource": "We are open source!",
 
         "home": "Why Litty?",
-        "about": "About us"
+        "about": "About Us"
     },
     "auth": {
         "welcomeBack": "Welcome Back!",
@@ -21,7 +21,7 @@
         "haveAccount": "Already have an account?"
     },
     "about": {
-        "info": "Chat, talk, discuss with your friends! So what? Time to get this party started!",
+        "info": "Chat, talk and discuss with your friends! So... Time to get this party started!",
         "moreInfo": "Learn more"
     },
     "updateUser": {
