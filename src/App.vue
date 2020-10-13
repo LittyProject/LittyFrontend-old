@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="app">
         <Navbar v-if="['Home', 'Login', 'Register', 'About'].includes($route.name)"/>
-        <Particle name="particle-js"/>
+        <Particle v-if="['Home', 'Login', 'Register', 'About'].includes($route.name)" name="particle-js"/>
         <transition
             :name="transitionName"
             :enter-active-class="enterActive"

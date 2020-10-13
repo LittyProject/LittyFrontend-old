@@ -1,16 +1,15 @@
 <template>
-    <div class="page">
-        <Error :errorMessage="error"/>
-
+    <div id="page">
+        <div id="smallscreen">
+            <h4>Please use a device with a wider screen</h4>
+        </div>
         <div id="frame">
-            <div id="topBar">
-                <span class="brand-text">LITTY  |  Pre-Alpha</span>
-            </div>
+            <Error :errorMessage="error"/>
             <div id="sidepanel">
                 <div id="profile">
                     <div class="wrap">
-                        <img id="profile-img" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" class="online" alt="" />
-                        <p>MY BOY!</p>
+                        <img id="profile-img" :src="user.avatarURL" :class="user.status" alt="" />
+                        <p><b>{{ user.username }}#{{ user.tag }}</b></p>
                         <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
                         <div id="status-options">
                             <ul>
@@ -89,19 +88,13 @@
                     </ul>
                 </div>
                 <div id="bottom-bar">
-                    <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add Friend</span></button>
-                    <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+                    <button id="addcontact"><ion-icon name="person-add-outline"></ion-icon> <span>Add Friend</span></button>
+                    <button id="settings"><ion-icon name="settings-outline"></ion-icon> <span>Settings</span></button>
                 </div>
             </div>
             <div class="content">
                 <div class="contact-profile">
-                    <!-- <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" /> -->
                     <p class="title">Messages</p>
-                    <!-- <div class="social-media">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </div> -->
                 </div>
                 <div class="messages">
                     <ul>
@@ -113,8 +106,9 @@
                 </div>
                 <div class="message-input">
                     <div class="wrap">
-                        <input type="text" placeholder="Write message here..." />
-                        <button class="submit"><img src="../assets/img/send-icon.png" class="paper-plane"></button>
+                        <input type="text" placeholder="Type your message...">
+                        <ion-icon name="document-attach" class="attachment"></ion-icon>
+                        <button class="submit"><ion-icon name="send" class="paper-plane"></ion-icon></button>
                     </div>
                 </div>
             </div>
@@ -137,6 +131,7 @@ export default {
     },
     data: function() {
         return {
+            user: {},
             servers: null,
             servername: null,
             error: this.message,
@@ -149,6 +144,18 @@ export default {
         ...mapActions([])
     },
     created() {
+        if (localStorage.getItem('token') && !!this.getUserData.email) {
+            axios
+                .get(`/api/users/@me`)
+                .then(res => {
+                    this.$store.dispatch('saveUserData', res.data);
+                    this.$store.dispatch('toggleAuthState', true);
+                    this.user = res.data;
+                })
+                .catch(err => err);
+        } else {
+            this.user = this.getUserData;
+        }
         return;
     },
     mounted() {

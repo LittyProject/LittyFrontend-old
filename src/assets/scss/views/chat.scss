@@ -1,19 +1,3 @@
-.page {
-    width: auto;
-    height: auto;
-}
-#topBar {
-    background-color: #1e2025;
-    width: 100%;
-    padding-bottom: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.brand-text {
-    font-family: 'Russo One', sans-serif;
-    color: white;
-}
-
 body {
   display: flex;
   align-items: center;
@@ -29,11 +13,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+#smallscreen {
+  opacity: 0;
+  max-width: 0px;
+  max-height: 0px;
+}
+
 #frame {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
-  height: 702px;
+  height: 100vh;
   min-height: 100%;
   max-height: 100%;
   background: #18191c;
@@ -497,12 +487,12 @@ body {
 #frame #sidepanel #bottom-bar button:hover {
   background: #435f7a;
 }
-#frame #sidepanel #bottom-bar button i {
+#frame #sidepanel #bottom-bar button ion-icon {
   margin-right: 3px;
   font-size: 1em;
 }
 @media screen and (max-width: 735px) {
-  #frame #sidepanel #bottom-bar button i {
+  #frame #sidepanel #bottom-bar button ion-icon {
     font-size: 1.3em;
   }
 }
@@ -524,11 +514,26 @@ body {
     min-width: 300px !important;
   }
 }
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 850px) {
   #frame .content {
     width: calc(100% - 340px);
   }
 }
+
+@media screen and (max-width: 375px) {
+  #frame {
+    opacity: 0;
+  }
+  #smallscreen {
+    width: 50vw;
+    height: 50vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    opacity: 1;
+    color: #ffffff;
+  }
+}
+
 #frame .content .title {
     color: white;
     padding-left: 10px;
@@ -654,29 +659,30 @@ body {
 #frame .content .message-input .wrap input:focus {
   outline: none;
 }
-// #frame .content .message-input .wrap .attachment {
-//   position: absolute;
-//   right: 60px;
-//   z-index: 4;
-//   margin-top: 10px;
-//   font-size: 1.1em;
-//   color: #435f7a;
-//   opacity: .5;
-//   cursor: pointer;
-// }
-// @media screen and (max-width: 735px) {
-//   #frame .content .message-input .wrap .attachment {
-//     margin-top: 17px;
-//     right: 65px;
-//   }
-// }
-// #frame .content .message-input .wrap .attachment:hover {
-//   opacity: 1;
-// }
+#frame .content .message-input .wrap .attachment {
+  position: absolute;
+  right: 100px;
+  z-index: 4;
+  margin-top: 10px;
+  font-size: 1.1em;
+  color:  #435f7a;
+  opacity: .5;
+  cursor: pointer;
+}
+@media screen and (max-width: 735px) {
+  #frame .content .message-input .wrap .attachment {
+    margin-top: 17px;
+    right: 105px;
+  }
+}
+#frame .content .message-input .wrap .attachment:hover {
+  opacity: 1;
+}
 #frame .content .message-input .wrap button {
   float: right;
   border: none;
   width: 90px;
+  height: 36px;
   padding-top: 2px;
   cursor: pointer;
   background: #32465a;
@@ -685,6 +691,7 @@ body {
 @media screen and (max-width: 735px) {
   #frame .content .message-input .wrap button {
     padding: 2px 0;
+    height: 46px;
   }
 }
 #frame .content .message-input .wrap button:hover {
