@@ -24,7 +24,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'https://litty.ezhost.pl',
+                target: 'http://localhost:8081',
                 changeOrigin: true
             }
         },
