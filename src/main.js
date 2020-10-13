@@ -16,16 +16,13 @@ let socket = null;
 
 /** Socket IO Client - Store in Vuex State for use in components */
 
-
-store.dispatch('assignSocket', socket);
-
 /** Check for auth token on refresh and set authorization header for incoming requests */
 if (localStorage.token) {
     setAuthToken(localStorage.token);
 
-    socket = io('https://littyapi.ezhost.pl', {'reconnection': true, 'reconnectionDelay': 5000, 'maxReconnectionAttempts':10, transports: ['websocket']});
+    //socket = io('https://littyapi.ezhost.pl', {'reconnection': true, 'reconnectionDelay': 5000, 'maxReconnectionAttempts':10, transports: ['websocket']});
 
-    socket.emit("authentication", {token: localStorage.token});
+    //socket.emit("authentication", {token: localStorage.token});
     store.dispatch('assignSocket', socket);
 } else {
     setAuthToken(null);
