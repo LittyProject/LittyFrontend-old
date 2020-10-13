@@ -48,7 +48,7 @@ export default new Vuex.Store({
             context.commit('ASSIGN_SOCKET', payload);
         },
         deleteUserAccount: context => {
-            axios.delete('/api/users/@me').then(() => {
+            axios.delete('https://littyapi.ezhost.pl/users/@me').then(() => {
                 context.commit('RESET_STATE');
                 context.commit('ASSIGN_SOCKET', null);
                 localStorage.clear();

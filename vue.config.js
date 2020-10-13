@@ -29,6 +29,7 @@ module.exports = {
             }
         },
         disableHostCheck: true,
-        transportMode: 'ws'
+        transportMode: 'ws',
+        sockPath: '/test/sockjs-node', 
     }
 };

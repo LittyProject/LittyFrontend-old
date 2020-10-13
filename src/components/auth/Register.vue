@@ -95,7 +95,7 @@ export default {
 
             if (this.username && this.email && this.password) {
                 axios
-                    .post('/api/auth/register', {
+                    .post('https://littyapi.ezhost.pl/auth/register', {
                         username: this.username,
                         email: this.email,
                         password: this.password,

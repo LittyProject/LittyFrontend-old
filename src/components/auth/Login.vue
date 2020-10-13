@@ -73,7 +73,7 @@ export default {
             this.error = '';
             if (this.email && this.password) {
                 axios
-                    .post('/api/auth/login', {
+                    .post('https://littyapi.ezhost.pl/auth/login', {
                         email: this.email,
                         password: this.password
                     })

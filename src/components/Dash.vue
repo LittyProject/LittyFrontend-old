@@ -146,7 +146,7 @@ export default {
     created() {
         if (localStorage.getItem('token') && !!this.getUserData.email) {
             axios
-                .get(`/api/users/@me`)
+                .get(`https://littyapi.ezhost.pl/users/@me`)
                 .then(res => {
                     this.$store.dispatch('saveUserData', res.data);
                     this.$store.dispatch('toggleAuthState', true);

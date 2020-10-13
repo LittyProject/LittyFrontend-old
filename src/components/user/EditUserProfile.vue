@@ -83,7 +83,7 @@ export default {
 
             if (localStorage.getItem('token')) {
                 axios
-                    .put(`/api/users/@me`, updatedUserDetails)
+                    .put(`https://littyapi.ezhost.pl/users/@me`, updatedUserDetails)
                     .then(async res => {
                         if (res.data.error) {
                             this.error = res.data.error;
@@ -109,7 +109,7 @@ export default {
     created() {
         if (localStorage.getItem('token') && _.isEmpty(this.getUserData)) {
             axios
-                .get(`/api/users/@me`)
+                .get(`https://littyapi.ezhost.pl/users/@me`)
                 .then(res => {
                     this.$store.dispatch('saveUserData', res.data);
                     this.$store.dispatch('toggleAuthState', true);
