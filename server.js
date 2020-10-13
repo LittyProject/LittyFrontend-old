@@ -3,7 +3,7 @@ const app = express();
 const port = 8080;
 
 app.get('/', (req, res) => {
-    res.send(require('dist/index.html'))
+    res.sendFile(__dirname + '/dist/index.html');
 })
 app.use(express.static('dist'))
 
