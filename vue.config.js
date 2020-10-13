@@ -22,12 +22,6 @@ module.exports = {
         }
     },
     devServer: {
-        proxy: {
-            '/api': {
-                target: 'http://localhost:8081',
-                changeOrigin: true
-            }
-        },
         disableHostCheck: true,
         transportMode: 'ws',
         sockPath: '/test/sockjs-node', 
