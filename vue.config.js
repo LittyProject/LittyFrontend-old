@@ -28,6 +28,7 @@ module.exports = {
                 changeOrigin: true
             }
         },
-        disableHostCheck: true
+        disableHostCheck: true,
+        transportMode: 'ws'
     }
 };
