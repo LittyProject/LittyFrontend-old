@@ -23,11 +23,7 @@ store.dispatch('assignSocket', socket);
 if (localStorage.token) {
     setAuthToken(localStorage.token);
 
-    if (process.env.NODE_ENV === 'development') {
-        socket = io('http://localhost:8081', {'reconnection': true, 'reconnectionDelay': 5000, 'maxReconnectionAttempts':10});
-    } else {
-        socket = io('/api/', {'reconnection': true, 'reconnectionDelay': 5000, 'maxReconnectionAttempts':10});
-    }
+    socket = io('https://littyapi.ezhost.pl', {'reconnection': true, 'reconnectionDelay': 5000, 'maxReconnectionAttempts':10, transports: ['websocket']});
 
     socket.emit("authentication", {token: localStorage.token});
     store.dispatch('assignSocket', socket);
