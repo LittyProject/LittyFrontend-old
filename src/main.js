@@ -1,63 +1,13 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import i18n from './i18n';
-import axios from 'axios';
-import io from 'socket.io-client';
-import setAuthToken from './utils/authToken';
-import moment from 'moment';
+import Vue from 'vue'
+import App from './App.vue'
+import './registerServiceWorker'
+import router from './router'
+import store from './store'
 
-Vue.config.productionTip = false;
-Vue.config.ignoredElements = ['ion-icons', /^ion-/];
-Vue.prototype.moment = moment;
-
-let socket = null;
-
-/** Socket IO Client - Store in Vuex State for use in components */
-
-/** Check for auth token on refresh and set authorization header for incoming requests */
-if (localStorage.token) {
-    setAuthToken(localStorage.token);
-
-    //socket = io('https://littyapi.ezhost.pl', {'reconnection': true, 'reconnectionDelay': 5000, 'maxReconnectionAttempts':10, transports: ['websocket']});
-
-    //socket.emit("authentication", {token: localStorage.token});
-    store.dispatch('assignSocket', socket);
-} else {
-    setAuthToken(null);
-}
-
-/** Axios Request Intercept */
-axios.interceptors.request.use(
-    function(config) {
-        return config;
-    },
-    function(err) {
-        return Promise.reject(err);
-    }
-);
-
-/** Axios Response Intercept */
-axios.interceptors.response.use(
-    function(response) {
-        return response;
-    },
-    function(err) {
-        if (err.response.status === 401) {
-            localStorage.removeItem('token');
-            router.push({
-                name: 'Login',
-                params: { message: 'Session end, please login again.' }
-            });
-        }
-        return Promise.reject(err);
-    }
-);
+Vue.config.productionTip = false
 
 new Vue({
-    router,
-    store,
-    i18n,
-    render: h => h(App)
-}).$mount('#app');
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')

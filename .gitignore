@@ -2,16 +2,16 @@
 node_modules
 /dist
 
+
 # local env files
 .env.local
 .env.*.local
-.env
 
 # Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-server/logs/*
+pnpm-debug.log*
 
 # Editor directories and files
 .idea
@@ -20,4 +20,4 @@ server/logs/*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?
